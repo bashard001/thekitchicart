@@ -1,4 +1,3 @@
-
 <div id="mycartItems">
 
 </div>
@@ -8,19 +7,39 @@ cart = JSON.parse(localStorage.getItem('myCart'));
   console.log("kitchikar.js file loaded in carthandler "+ JSON.stringify(cart));
   
   
-  var cartHTML = "<br> <h3> The following items are added to the cart </h3>";
+  var cartHTML = "<br> <h3 class='card-header text-center' style='background-color: #D3D3D3;'> The following items are added to the cart </h3>";
   Object.keys(cart).forEach(function(key) {
   
     console.table('Key : ' + key + ', Value : ' + cart[key]);
     cartHTML += '</br>'
-    cartHTML += '<h5 class="card-header text-center" style="width: 80vw" > Item : ' + key + '<br> Quantity : ' + cart[key] + ' <br></h5>';
+    cartHTML += '<h5 class="card-header text-center" > Item : ' + key + '<br> Quantity : ' + cart[key] + ' <br></h5>';
   })
   console.log("cartHTMLcartHTMLcartHTML: "+cartHTML);
   document.getElementById("mycartItems").innerHTML = cartHTML;
 
+    function deleteItems() { 
+            // Clear local storage items. 
+            localStorage.clear(); 
+        } 
+
   </script>
 
-  {{#each kitchenitems}}
+  {{!-- {{#each kitchenitems}} --}}
+
+{{#each kitchenitems}}
+  <div class="form-row text-center">
+    <div class="col-12">
+      <br>
+      
+        <a class="btn btn-danger checkout" href="" onclick="deleteItems()" >Checkout</a>
+      <br>
+      <br>
+    </div>
+ </div>
+
+</div>
+
+
   {{!--kitchenitems.id--}}
   {{!--toJSON kitchenitems--}}
   
@@ -34,8 +53,7 @@ cart = JSON.parse(localStorage.getItem('myCart'));
   
 
       --}}
+
+
     </div>
-
-
-
   {{/each}}
